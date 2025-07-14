@@ -1,9 +1,0 @@
-<!-- app/src/main/res/xml/data_extraction_rules.xml -->
-<data-extraction-rules>
-    <cloud-backup>
-        <exclude domain="sharedpref" path="settings.xml" />
-    </cloud-backup>
-    <device-transfer>
-        <exclude domain="sharedpref" path="settings.xml" />
-    </device-transfer>
-</data-extraction-rules>
