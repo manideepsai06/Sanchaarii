@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.sanchaarii.app-debug-58:/xml_backup_rules.xml.flat",
+        "source": "com.sanchaarii.app-main-60:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.sanchaarii.app-debug-58:/xml_data_extraction_rules.xml.flat",
+        "source": "com.sanchaarii.app-main-60:/xml/data_extraction_rules.xml"
+    }
+]

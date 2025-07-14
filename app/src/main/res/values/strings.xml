@@ -1,0 +1,59 @@
+<!-- app/src/main/res/values/strings.xml -->
+<resources>
+    <string name="app_name">Sanchaarii</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="sign_in_continue">Sign in to continue your journey</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="no_account">Don\'t have an account? Sign up</string>
+    <string name="have_account">Already have an account? Sign in</string>
+    <string name="create_account">Create Account</string>
+    <string name="start_journey">Start your travel journey with us</string>
+    <string name="travel_companion">Your Travel Companion</string>
+
+    <!-- Home Screen -->
+    <string name="ready_adventure">Ready for your next adventure?</string>
+    <string name="quick_stats">Quick Stats</string>
+    <string name="upcoming_trips">Upcoming Trips</string>
+    <string name="total_expenses">Total Expenses</string>
+    <string name="countries">Countries</string>
+    <string name="quick_actions">Quick Actions</string>
+    <string name="recent_activities">Recent Activities</string>
+    <string name="plan_trip">Plan Trip</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="view_itinerary">View Itinerary</string>
+
+    <!-- Navigation -->
+    <string name="home">Home</string>
+    <string name="trip_planner">Trip Planner</string>
+    <string name="itinerary">Itinerary</string>
+    <string name="expenses">Expenses</string>
+    <string name="profile">Profile</string>
+
+    <!-- Coming Soon -->
+    <string name="coming_soon">Coming Soon</string>
+    <string name="trip_planner_desc">Plan your perfect journey with AI-powered recommendations, budget tracking, and collaborative planning tools.</string>
+    <string name="itinerary_desc">Organize your daily plans, manage bookings, and get real-time updates on your travel schedule.</string>
+    <string name="expense_desc">Track your travel expenses, split bills with friends, and manage your budget with smart analytics.</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="theme_subtitle">Switch between light and dark mode</string>
+    <string name="notifications">Notifications</string>
+    <string name="notifications_subtitle">Manage your notification preferences</string>
+    <string name="language">Language</string>
+    <string name="language_subtitle">Choose your preferred language</string>
+    <string name="privacy_security">Privacy &amp; Security</string>
+    <string name="privacy_subtitle">Manage your privacy settings</string>
+    <string name="support">Support</string>
+    <string name="help_support">Help &amp; Support</string>
+    <string name="help_subtitle">Get help with using the app</string>
+    <string name="about">About</string>
+    <string name="about_subtitle">App version and information</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="sign_out_subtitle">Sign out of your account</string>
+</resources>
