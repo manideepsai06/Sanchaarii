@@ -1,0 +1,21 @@
+# Android Studio specific
+.idea/
+*.iml
+*.ipr
+
+# Gradle
+.gradle/
+build/
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Local config
+local.properties
+
+# VS Code
+.vscode/
