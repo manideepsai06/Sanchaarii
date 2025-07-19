@@ -1,4 +1,3 @@
-// ui/screens/profile/ProfileScreen.kt
 package com.sanchaarii.app.ui.screens.profile
 
 import androidx.compose.foundation.layout.*
@@ -13,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sanchaarii.app.viewmodel.ThemeViewModel
@@ -20,12 +20,25 @@ import com.sanchaarii.app.viewmodel.ThemeViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
-    themeViewModel: ThemeViewModel
+    themeViewModel: ThemeViewModel,
+    modifier: Modifier = Modifier
 ) {
     val isDarkTheme by themeViewModel.isDarkTheme
+    ProfileScreenContent(
+        isDarkTheme = isDarkTheme,
+        onToggleTheme = { themeViewModel.toggleTheme() },
+        modifier = modifier
+    )
+}
 
+@Composable
+fun ProfileScreenContent(
+    isDarkTheme: Boolean,
+    onToggleTheme: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     LazyColumn(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -96,7 +109,6 @@ fun ProfileScreen(
                         modifier = Modifier.padding(bottom = 16.dp)
                     )
 
-                    // Theme Toggle
                     SettingsItem(
                         icon = if (isDarkTheme) Icons.Default.DarkMode else Icons.Default.LightMode,
                         title = "Dark Theme",
@@ -104,7 +116,7 @@ fun ProfileScreen(
                         trailing = {
                             Switch(
                                 checked = isDarkTheme,
-                                onCheckedChange = { themeViewModel.toggleTheme() }
+                                onCheckedChange = { onToggleTheme() }
                             )
                         }
                     )
@@ -115,7 +127,7 @@ fun ProfileScreen(
                         icon = Icons.Default.Notifications,
                         title = "Notifications",
                         subtitle = "Manage your notification preferences",
-                        onClick = { /* TODO: Navigate to notifications */ }
+                        onClick = {}
                     )
 
                     Divider()
@@ -124,7 +136,7 @@ fun ProfileScreen(
                         icon = Icons.Default.Language,
                         title = "Language",
                         subtitle = "Choose your preferred language",
-                        onClick = { /* TODO: Navigate to language settings */ }
+                        onClick = {}
                     )
 
                     Divider()
@@ -133,14 +145,14 @@ fun ProfileScreen(
                         icon = Icons.Default.Security,
                         title = "Privacy & Security",
                         subtitle = "Manage your privacy settings",
-                        onClick = { /* TODO: Navigate to privacy settings */ }
+                        onClick = {}
                     )
                 }
             }
         }
 
         item {
-            // Additional Options
+            // Support Section
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp)
@@ -160,7 +172,7 @@ fun ProfileScreen(
                         icon = Icons.Default.Help,
                         title = "Help & Support",
                         subtitle = "Get help with using the app",
-                        onClick = { /* TODO: Navigate to help */ }
+                        onClick = {}
                     )
 
                     Divider()
@@ -169,7 +181,7 @@ fun ProfileScreen(
                         icon = Icons.Default.Info,
                         title = "About",
                         subtitle = "App version and information",
-                        onClick = { /* TODO: Navigate to about */ }
+                        onClick = {}
                     )
 
                     Divider()
@@ -178,7 +190,7 @@ fun ProfileScreen(
                         icon = Icons.Default.Logout,
                         title = "Sign Out",
                         subtitle = "Sign out of your account",
-                        onClick = { /* TODO: Implement sign out */ }
+                        onClick = {}
                     )
                 }
             }
@@ -194,14 +206,14 @@ fun SettingsItem(
     onClick: (() -> Unit)? = null,
     trailing: @Composable (() -> Unit)? = null
 ) {
-    val modifier = if (onClick != null) {
+    val clickableModifier = if (onClick != null) {
         Modifier.fillMaxWidth()
     } else {
         Modifier.fillMaxWidth()
     }
 
     Surface(
-        modifier = modifier,
+        modifier = clickableModifier,
         onClick = onClick ?: {}
     ) {
         Row(
@@ -247,4 +259,13 @@ fun SettingsItem(
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewProfileScreen() {
+    ProfileScreenContent(
+        isDarkTheme = false,
+        onToggleTheme = {}
+    )
 }

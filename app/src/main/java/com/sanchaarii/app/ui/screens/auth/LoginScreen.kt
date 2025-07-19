@@ -1,4 +1,3 @@
-// ui/screens/auth/LoginScreen.kt
 package com.sanchaarii.app.ui.screens.auth
 
 import androidx.compose.foundation.layout.*
@@ -8,6 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -15,7 +15,6 @@ import androidx.navigation.NavController
 import com.sanchaarii.app.navigation.Screen
 import com.sanchaarii.app.viewmodel.AuthViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(
     navController: NavController,
@@ -33,6 +32,27 @@ fun LoginScreen(
         }
     }
 
+    LoginScreenContent(
+        email = email,
+        onEmailChange = { email = it },
+        password = password,
+        onPasswordChange = { password = it },
+        isLoading = authState.isLoading,
+        onLoginClick = { viewModel.login(email, password) },
+        onSignUpClick = { navController.navigate(Screen.SignUp.route) }
+    )
+}
+
+@Composable
+fun LoginScreenContent(
+    email: String,
+    onEmailChange: (String) -> Unit,
+    password: String,
+    onPasswordChange: (String) -> Unit,
+    isLoading: Boolean,
+    onLoginClick: () -> Unit,
+    onSignUpClick: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -59,7 +79,7 @@ fun LoginScreen(
 
         OutlinedTextField(
             value = email,
-            onValueChange = { email = it },
+            onValueChange = onEmailChange,
             label = { Text("Email") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true
@@ -69,7 +89,7 @@ fun LoginScreen(
 
         OutlinedTextField(
             value = password,
-            onValueChange = { password = it },
+            onValueChange = onPasswordChange,
             label = { Text("Password") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true,
@@ -79,15 +99,15 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(
-            onClick = { viewModel.login(email, password) },
+            onClick = onLoginClick,
             modifier = Modifier.fillMaxWidth(),
-            enabled = !authState.isLoading
+            enabled = !isLoading
         ) {
-            if (authState.isLoading) {
+            if (isLoading) {
                 CircularProgressIndicator(
-                    modifier = Modifier.size(16.dp), // ✅ Correct
+                    modifier = Modifier.size(16.dp),
                     color = MaterialTheme.colorScheme.onPrimary,
-                    strokeWidth = 2.dp // optional for thinner spinner
+                    strokeWidth = 2.dp
                 )
             } else {
                 Text("Sign In")
@@ -97,9 +117,23 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         TextButton(
-            onClick = { navController.navigate(Screen.SignUp.route) }
+            onClick = onSignUpClick
         ) {
             Text("Don't have an account? Sign up")
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewLoginScreen() {
+    LoginScreenContent(
+        email = "demo@example.com",
+        onEmailChange = {},
+        password = "password",
+        onPasswordChange = {},
+        isLoading = false,
+        onLoginClick = {},
+        onSignUpClick = {}
+    )
 }

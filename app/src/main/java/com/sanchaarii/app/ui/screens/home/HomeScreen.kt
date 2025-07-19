@@ -1,10 +1,8 @@
-// ui/screens/home/HomeScreen.kt
 package com.sanchaarii.app.ui.screens.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -13,24 +11,27 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.sanchaarii.app.ui.components.SectionTitle
 import com.sanchaarii.app.ui.components.StatsCard
 import com.sanchaarii.app.viewmodel.HomeViewModel
+import com.sanchaarii.app.viewmodel.HomeState
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(
-    viewModel: HomeViewModel = hiltViewModel()
-) {
+fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
     val homeState by viewModel.homeState.collectAsState()
+    HomeScreenContent(homeState)
+}
 
+@Composable
+fun HomeScreenContent(homeState: HomeState) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
@@ -215,4 +216,21 @@ fun QuickActionCard(
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewHomeScreen() {
+    HomeScreenContent(
+        homeState = HomeState(
+            userName = "John Doe",
+            upcomingTrips = 2,
+            totalExpenses = 1250.0,
+            recentActivities = listOf(
+                "Added trip to Bali",
+                "Shared itinerary",
+                "Updated expense record"
+            )
+        )
+    )
 }

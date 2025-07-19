@@ -1,44 +1,20 @@
 // navigation/BottomNavItem.kt
 package com.sanchaarii.app.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Receipt
-import androidx.compose.material.icons.filled.Schedule
-import androidx.compose.material.icons.filled.TravelExplore
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 
 data class BottomNavItem(
     val title: String,
     val icon: ImageVector,
-    val screen: Screen
+    val route: String // ✅ Just use String here
 )
 
 val bottomNavItems = listOf(
-    BottomNavItem(
-        title = "Home",
-        icon = Icons.Default.Home,
-        screen = Screen.Home
-    ),
-    BottomNavItem(
-        title = "Trip Planner",
-        icon = Icons.Default.TravelExplore,
-        screen = Screen.TripPlanner
-    ),
-    BottomNavItem(
-        title = "Itinerary",
-        icon = Icons.Default.Schedule,
-        screen = Screen.Itinerary
-    ),
-    BottomNavItem(
-        title = "Expenses",
-        icon = Icons.Default.Receipt,
-        screen = Screen.ExpenseTracker
-    ),
-    BottomNavItem(
-        title = "Profile",
-        icon = Icons.Default.Person,
-        screen = Screen.Profile
-    )
+    BottomNavItem("Home", Icons.Default.Home, Screen.Home.route),
+    BottomNavItem("Trip Planner", Icons.Default.TravelExplore, Screen.TripPlanner.route),
+    BottomNavItem("Itinerary", Icons.Default.Schedule, Screen.Itinerary.route),
+    BottomNavItem("Expenses", Icons.Default.Receipt, Screen.ExpenseTracker.route),
+    BottomNavItem("Profile", Icons.Default.Person, Screen.Profile.route)
 )
