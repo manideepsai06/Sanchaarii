@@ -1,4 +1,3 @@
-// ui/screens/trip/TripPlannerScreen.kt
 package com.sanchaarii.app.ui.screens.trip
 
 import androidx.compose.foundation.layout.*
@@ -9,14 +8,20 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sanchaarii.app.ui.components.ComingSoonCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TripPlannerScreen() {
+    TripPlannerScreenContent()
+}
+
+@Composable
+fun TripPlannerScreenContent(modifier: Modifier = Modifier) {
     LazyColumn(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -31,4 +36,10 @@ fun TripPlannerScreen() {
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewTripPlannerScreen() {
+    TripPlannerScreenContent()
 }

@@ -1,4 +1,3 @@
-// ui/screens/expense/ExpenseTrackerScreen.kt
 package com.sanchaarii.app.ui.screens.expense
 
 import androidx.compose.foundation.layout.*
@@ -9,12 +8,17 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sanchaarii.app.ui.components.ComingSoonCard
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ExpenseTrackerScreen() {
+    ExpenseTrackerScreenContent()
+}
+
+@Composable
+fun ExpenseTrackerScreenContent() {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -31,4 +35,10 @@ fun ExpenseTrackerScreen() {
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewExpenseTrackerScreen() {
+    ExpenseTrackerScreenContent()
 }
